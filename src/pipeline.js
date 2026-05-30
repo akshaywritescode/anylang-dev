@@ -131,7 +131,7 @@ function normalizeTargetEntry(entry) {
 async function writeGeneratedRuntime(config) {
   if (config.runtime === false) return;
 
-  const output = path.resolve(config.runtime?.output || "anylang.ts");
+  const output = path.resolve(config.runtime?.output || "src/anylang.ts");
   const outDir = path.resolve(config.outDir);
   const locales = [config.sourceLocale, ...config.targetLocales.filter((locale) => locale !== config.sourceLocale)];
   const importFrom = config.runtime?.importFrom || "anylang-dev/runtime";

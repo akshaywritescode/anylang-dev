@@ -8,7 +8,7 @@ export const DEFAULT_CONFIG = {
   exclude: ["node_modules", ".git", "dist", "build", ".next"],
   outDir: "locales",
   runtime: {
-    output: "anylang.ts",
+    output: "src/anylang.ts",
     importFrom: "anylang-dev/runtime"
   },
   functionName: "$tr",
