@@ -1,6 +1,6 @@
 {
   "name": "anylang-dev",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Bring-your-own-key website translation JSON generator.",
   "type": "module",
   "files": [
@@ -18,7 +18,14 @@
       "types": "./src/runtime.d.ts",
       "default": "./src/runtime.js"
     },
-    "./vite": "./src/vite.js"
+    "./vite": {
+      "types": "./src/vite.d.ts",
+      "default": "./src/vite.js"
+    },
+    "./jsx-runtime": {
+      "types": "./src/jsx-runtime.d.ts",
+      "default": "./src/runtime.js"
+    }
   },
   "scripts": {
     "test": "node --test"

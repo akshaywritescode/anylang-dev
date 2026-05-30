@@ -12,7 +12,7 @@ export default function anylang(options = {}) {
 
       const result = transformAutoJsx(code, id, {
         keyPrefix: options.keyPrefix,
-        runtimeImport: options.runtimeImport || "/src/anylang.ts"
+        runtimeImport: options.runtimeImport || "@/anylang"
       });
 
       if (!result.changed) return null;

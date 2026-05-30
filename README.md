@@ -72,6 +72,18 @@ export default defineConfig({
 });
 ```
 
+If you use `tr="false"`, add the JSX type augmentation once in `src/vite-env.d.ts`:
+
+```ts
+import "anylang-dev/jsx-runtime";
+```
+
+That makes this TypeScript-safe:
+
+```tsx
+<p tr="false">BrandName</p>
+```
+
 `anylang scan` creates locale files without calling a translation provider. To translate for real with Gemini, add your own API key to `.env` in the project where you run `anylang`:
 
 ```env

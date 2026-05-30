@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { extractAutoJsxStrings, transformAutoJsx } from "../src/jsx.js";
+import anylang from "../src/vite.js";
 
 test("extractAutoJsxStrings extracts static JSX text and skips tr=false", () => {
   const source = `
@@ -22,6 +23,13 @@ test("extractAutoJsxStrings extracts static JSX text and skips tr=false", () => 
     "Get started"
   ]);
   assert.ok(items[0].key.startsWith("auto."));
+});
+
+test("vite plugin injects the same import path users use in docs", () => {
+  const plugin = anylang();
+  const result = plugin.transform("export default () => <h1>Hello world</h1>;", "/project/src/App.tsx");
+
+  assert.match(result.code, /from "@\/anylang"/);
 });
 
 test("transformAutoJsx wraps static JSX text with AnyLangText", () => {
