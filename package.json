@@ -1,0 +1,41 @@
+{
+  "name": "anylang-dev",
+  "version": "0.1.0",
+  "description": "Bring-your-own-key website translation JSON generator.",
+  "type": "module",
+  "files": [
+    "bin",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "bin": {
+    "anylang": "bin/anylang.js"
+  },
+  "exports": {
+    ".": "./src/runtime.js",
+    "./runtime": {
+      "types": "./src/runtime.d.ts",
+      "default": "./src/runtime.js"
+    }
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "i18n",
+    "translation",
+    "localization",
+    "gemini",
+    "react",
+    "tsx"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/akshaywritescode/anylang-dev.git"
+  },
+  "license": "MIT"
+}
