@@ -1,5 +1,6 @@
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
+import { extractAutoJsxStrings } from "./jsx.js";
 
 const DEFAULT_EXTENSIONS = new Set([".js", ".jsx", ".ts", ".tsx", ".vue", ".html", ".svelte", ".astro"]);
 
@@ -20,9 +21,25 @@ export async function extractProjectStrings(config) {
         ...lineColumnForIndex(source, match.index)
       });
     }
+    if (config.autoTranslate?.jsx !== false && isJsxFile(file)) {
+      for (const match of extractAutoJsxStrings(source, file, config.autoTranslate || {})) {
+        const key = `${match.key}\0${file}\0${match.index}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        items.push({
+          ...match,
+          file,
+          ...lineColumnForIndex(source, match.index)
+        });
+      }
+    }
   }
 
   return { files, items };
+}
+
+function isJsxFile(file) {
+  return /\.(jsx|tsx)$/.test(file);
 }
 
 export function extractFromSource(source, functionName = "$tr") {

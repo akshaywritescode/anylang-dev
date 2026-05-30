@@ -12,6 +12,10 @@ export const DEFAULT_CONFIG = {
     importFrom: "anylang-dev/runtime"
   },
   functionName: "$tr",
+  autoTranslate: {
+    jsx: true,
+    keyPrefix: "auto"
+  },
   provider: {
     name: "gemini",
     baseUrl: "https://generativelanguage.googleapis.com/v1beta",

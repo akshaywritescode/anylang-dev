@@ -1,13 +1,13 @@
 # anylang-dev
 
-`anylang-dev` is a small bring-your-own-key website translation CLI. It scans your source code for explicit translation calls and writes JSON locale files.
+`anylang-dev` is a bring-your-own-key website translation CLI and Vite plugin. It scans your source code, writes JSON locale files, and can automatically translate static JSX text.
 
-```js
-const title = $tr("home.title", "This would get translated");
-const untouched = "This stays as it is";
+```tsx
+<h1>Translate your website with anylang</h1>
+<p tr="false">This text stays as it is</p>
 ```
 
-It works in JSX and TSX when the text is wrapped in a JavaScript expression:
+For dynamic text, use the generated `useTr` hook:
 
 ```tsx
 export function Hero() {
@@ -15,11 +15,9 @@ export function Hero() {
 
   return (
     <section>
-      <h1>{$tr("home.title", "Welcome back")}</h1>
-      <button aria-label={$tr("actions.saveChanges", "Save changes")}>
-        {$tr("actions.save", "Save")}
-      </button>
-      <p>This plain JSX text stays as it is.</p>
+      <h1>Welcome back</h1>
+      <button>{$tr("actions.save", "Save")}</button>
+      <p tr="false">BrandName</p>
     </section>
   );
 }
@@ -62,6 +60,18 @@ anylang init
 anylang scan
 ```
 
+Add the Vite plugin:
+
+```ts
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import anylang from "anylang-dev/vite";
+
+export default defineConfig({
+  plugins: [anylang(), react()],
+});
+```
+
 `anylang scan` creates locale files without calling a translation provider. To translate for real with Gemini, add your own API key to `.env` in the project where you run `anylang`:
 
 ```env
@@ -90,6 +100,10 @@ anylang translate
     "importFrom": "anylang-dev/runtime"
   },
   "functionName": "$tr",
+  "autoTranslate": {
+    "jsx": true,
+    "keyPrefix": "auto"
+  },
   "provider": {
     "name": "gemini",
     "model": "gemini-2.5-flash"
@@ -159,11 +173,14 @@ The lock file stores SHA-256 fingerprints so unchanged strings are skipped on la
 
 ## Workflow
 
-1. Wrap source text in your app:
+1. Write normal static JSX text:
 
 ```tsx
-<h1>{$tr("hero.title", "Translate your website with anylang")}</h1>
+<h1>Translate your website with anylang</h1>
+<p tr="false">Do not translate this text</p>
 ```
+
+Use `$tr("key", "source text")` only for dynamic or special cases.
 
 2. Scan the project:
 
@@ -190,7 +207,7 @@ Source locale output:
 
 ```json
 {
-  "hero.title": {
+  "auto.src_app.translate_your_website_with_anylang_a1b2c3d4": {
     "text": "Translate your website with anylang",
     "variables": []
   }
@@ -201,7 +218,7 @@ Target locale output:
 
 ```json
 {
-  "hero.title": {
+  "auto.src_app.translate_your_website_with_anylang_a1b2c3d4": {
     "source": "Translate your website with anylang",
     "text": "anylang से अपनी वेबसाइट का अनुवाद करें",
     "variables": []
@@ -240,8 +257,16 @@ Then use translations in any component:
 
 ```tsx
 function Hero() {
+  return <h1>Translate your website with anylang</h1>;
+}
+```
+
+For dynamic text:
+
+```tsx
+function SaveButton() {
   const $tr = useTr();
-  return <h1>{$tr("hero.title", "Translate your website with anylang")}</h1>;
+  return <button>{$tr("actions.save", "Save")}</button>;
 }
 ```
 

@@ -233,6 +233,11 @@ export function useTr() {
   if (!context) throw new Error('useTr must be used inside AnyLangProvider')
   return context.$tr
 }
+
+export function AnyLangText({ k, source }: { k: string; source: string }) {
+  const $tr = useTr()
+  return $tr(k, source)
+}
 `;
 }
 

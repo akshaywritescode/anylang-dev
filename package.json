@@ -1,6 +1,6 @@
 {
   "name": "anylang-dev",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Bring-your-own-key website translation JSON generator.",
   "type": "module",
   "files": [
@@ -17,7 +17,8 @@
     "./runtime": {
       "types": "./src/runtime.d.ts",
       "default": "./src/runtime.js"
-    }
+    },
+    "./vite": "./src/vite.js"
   },
   "scripts": {
     "test": "node --test"
@@ -37,5 +38,11 @@
     "type": "git",
     "url": "git+ssh://git@github.com/akshaywritescode/anylang-dev.git"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@babel/generator": "^7.29.7",
+    "@babel/parser": "^7.29.7",
+    "@babel/traverse": "^7.29.7",
+    "@babel/types": "^7.29.7"
+  }
 }
