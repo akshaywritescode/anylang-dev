@@ -1,6 +1,6 @@
 # anylang-dev
 
-`anylang-dev` is a bring-your-own-key website translation CLI and Vite plugin. It scans your source code, writes JSON locale files, and can automatically translate static JSX text.
+`anylang-dev` is a bring-your-own-key website translation CLI with Vite and Next.js support. It scans your source code, writes JSON locale files, and can automatically translate static JSX text.
 
 ```tsx
 <h1>Translate your website with anylang</h1>
@@ -72,6 +72,18 @@ export default defineConfig({
 });
 ```
 
+For Next.js, use the config wrapper in `next.config.mjs`:
+
+```js
+import anylang from "anylang-dev/next";
+
+const nextConfig = {};
+
+export default anylang({
+  runtimeImport: "@/anylang",
+})(nextConfig);
+```
+
 If you use `tr="false"`, add the JSX type augmentation once in `src/vite-env.d.ts`:
 
 ```ts
@@ -83,6 +95,8 @@ That makes this TypeScript-safe:
 ```tsx
 <p tr="false">BrandName</p>
 ```
+
+In a Next.js app, you can put the same import in any global declaration file, such as `src/anylang-env.d.ts`.
 
 `anylang scan` creates locale files without calling a translation provider. To translate for real with Gemini, add your own API key to `.env` in the project where you run `anylang`:
 
@@ -263,6 +277,36 @@ root.render(
     <App />
   </AnyLangProvider>
 );
+```
+
+For the Next.js App Router, create a client provider:
+
+```tsx
+// app/providers.tsx
+"use client";
+
+import { AnyLangProvider } from "@/anylang";
+
+export function Providers({ children }: { children: React.ReactNode }) {
+  return <AnyLangProvider>{children}</AnyLangProvider>;
+}
+```
+
+Then wrap your layout:
+
+```tsx
+// app/layout.tsx
+import { Providers } from "./providers";
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <Providers>{children}</Providers>
+      </body>
+    </html>
+  );
+}
 ```
 
 Then use translations in any component:
