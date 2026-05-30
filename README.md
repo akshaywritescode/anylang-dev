@@ -11,7 +11,7 @@ It works in JSX and TSX when the text is wrapped in a JavaScript expression:
 
 ```tsx
 export function Hero() {
-  const $tr = useAnyLang(language);
+  const $tr = useTr();
 
   return (
     <section>
@@ -32,22 +32,18 @@ By default, `anylang` scans `.js`, `.jsx`, `.ts`, `.tsx`, `.vue`, and `.html` fi
 `anylang` does not require a built-in selector. Build any selector UI you want and pass the selected locale to `setLanguage`.
 
 ```tsx
-const [language, setSelectedLanguage] = useState<LanguageCode>("en");
-const $tr = useAnyLang(language);
-
-function handleLanguageChange(nextLanguage: LanguageCode) {
-  setLanguage(nextLanguage);
-  setSelectedLanguage(nextLanguage);
-}
+const { language, languages, setLanguage } = useLanguage();
 
 return (
   <select
     value={language}
-    onChange={(event) => handleLanguageChange(event.target.value as LanguageCode)}
+    onChange={(event) => setLanguage(event.target.value as LanguageCode)}
   >
-    <option value="en">English</option>
-    <option value="hi">हिन्दी</option>
-    <option value="ja">日本語</option>
+    {languages.map((language) => (
+      <option key={language.code} value={language.code}>
+        {language.nativeLabel}
+      </option>
+    ))}
   </select>
 );
 ```
@@ -221,11 +217,51 @@ Import the generated runtime file in your app:
 
 ```tsx
 import {
-  languages,
-  setLanguage,
-  useAnyLang,
+  AnyLangProvider,
+  useLanguage,
+  useTr,
   type LanguageCode
 } from "./anylang.generated";
 ```
 
 You do not manually import `en.json`, `hi.json`, `ja.json`, etc. The generated file does that for you based on `sourceLocale` and `targetLocales`.
+
+Wrap your app once:
+
+```tsx
+root.render(
+  <AnyLangProvider>
+    <App />
+  </AnyLangProvider>
+);
+```
+
+Then use translations in any component:
+
+```tsx
+function Hero() {
+  const $tr = useTr();
+  return <h1>{$tr("hero.title", "Translate your website with anylang")}</h1>;
+}
+```
+
+And build any selector with `useLanguage`:
+
+```tsx
+function LanguageSelector() {
+  const { language, languages, setLanguage } = useLanguage();
+
+  return (
+    <select
+      value={language}
+      onChange={(event) => setLanguage(event.target.value as LanguageCode)}
+    >
+      {languages.map((language) => (
+        <option key={language.code} value={language.code}>
+          {language.nativeLabel}
+        </option>
+      ))}
+    </select>
+  );
+}
+```

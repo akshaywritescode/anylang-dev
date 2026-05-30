@@ -50,6 +50,9 @@ test("runPipeline writes source, target, and lock files in dry-run mode", async 
     assert.ok(lock.entries["hi:home.title"].fingerprint);
     assert.match(generated, /export type LanguageCode = 'en' \| 'hi'/);
     assert.match(generated, /import catalog_hi from '..\/locales\/hi.json'/);
+    assert.match(generated, /export function AnyLangProvider/);
+    assert.match(generated, /export function useTr/);
+    assert.match(generated, /export function useLanguage/);
   } finally {
     chdir(originalCwd);
   }
