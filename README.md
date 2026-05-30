@@ -86,7 +86,7 @@ anylang translate
   "exclude": ["node_modules", ".git", "dist", "build", ".next"],
   "outDir": "locales",
   "runtime": {
-    "output": "src/anylang.generated.ts",
+    "output": "anylang.ts",
     "importFrom": "anylang-dev/runtime"
   },
   "functionName": "$tr",
@@ -151,8 +151,7 @@ locales/
   en.json
   hi.json
   anylang.lock.json
-src/
-  anylang.generated.ts
+anylang.ts
 ```
 
 The lock file stores SHA-256 fingerprints so unchanged strings are skipped on later runs.
@@ -172,7 +171,7 @@ anylang scan
 ```
 
 This writes keyed source entries to `locales/en.json` and creates placeholder entries in each target locale.
-It also generates `src/anylang.generated.ts`, which imports all locale JSON files and exports runtime helpers.
+It also generates `anylang.ts`, which imports all locale JSON files and exports runtime helpers.
 
 3. Translate with Gemini:
 
@@ -221,7 +220,7 @@ import {
   useLanguage,
   useTr,
   type LanguageCode
-} from "./anylang.generated";
+} from "./anylang";
 ```
 
 You do not manually import `en.json`, `hi.json`, `ja.json`, etc. The generated file does that for you based on `sourceLocale` and `targetLocales`.

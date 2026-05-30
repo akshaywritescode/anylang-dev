@@ -31,7 +31,7 @@ test("runPipeline writes source, target, and lock files in dry-run mode", async 
     const en = JSON.parse(await readFile(path.join(dir, "locales", "en.json"), "utf8"));
     const hi = JSON.parse(await readFile(path.join(dir, "locales", "hi.json"), "utf8"));
     const lock = JSON.parse(await readFile(path.join(dir, "locales", "anylang.lock.json"), "utf8"));
-    const generated = await readFile(path.join(dir, "src", "anylang.generated.ts"), "utf8");
+    const generated = await readFile(path.join(dir, "anylang.ts"), "utf8");
 
     assert.equal(summary.sourceCount, 1);
     assert.deepEqual(en, {
@@ -49,7 +49,7 @@ test("runPipeline writes source, target, and lock files in dry-run mode", async 
     });
     assert.ok(lock.entries["hi:home.title"].fingerprint);
     assert.match(generated, /export type LanguageCode = 'en' \| 'hi'/);
-    assert.match(generated, /import catalog_hi from '..\/locales\/hi.json'/);
+    assert.match(generated, /import catalog_hi from '.\/locales\/hi.json'/);
     assert.match(generated, /export function AnyLangProvider/);
     assert.match(generated, /export function useTr/);
     assert.match(generated, /export function useLanguage/);

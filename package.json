@@ -1,6 +1,6 @@
 {
   "name": "anylang-dev",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Bring-your-own-key website translation JSON generator.",
   "type": "module",
   "files": [
