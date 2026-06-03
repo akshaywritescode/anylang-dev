@@ -2,6 +2,8 @@
 
 `anylang-dev` is a bring-your-own-key website translation CLI with Vite and Next.js support. It scans your source code, writes JSON locale files, and can automatically translate static JSX text.
 
+![gif](https://raw.githubusercontent.com/akshaywritescode/anylang-dev/refs/heads/main/anylang.gif)
+
 ```tsx
 <h1>Translate your website with anylang</h1>
 <p tr="false">This text stays as it is</p>
