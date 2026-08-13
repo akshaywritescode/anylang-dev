@@ -58,7 +58,7 @@ export function transformAutoJsx(source, filePath, options = {}) {
   });
 
   if (!changed) return { code: source, changed: false };
-  ensureAnyLangTextImport(ast, options.runtimeImport || "/src/anylang.ts");
+  ensureAnyLangTextImport(ast, options.runtimeImport || "/anylang.ts");
 
   return {
     code: generate.default(ast, { retainLines: true }, source).code,

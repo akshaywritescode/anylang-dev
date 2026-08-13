@@ -122,7 +122,7 @@ anylang translate
   "exclude": ["node_modules", ".git", "dist", "build", ".next"],
   "outDir": "locales",
   "runtime": {
-    "output": "src/anylang.ts",
+    "output": "anylang.ts",
     "importFrom": "anylang-dev/runtime"
   },
   "functionName": "$tr",
@@ -215,7 +215,7 @@ anylang scan
 ```
 
 This writes keyed source entries to `locales/en.json` and creates placeholder entries in each target locale.
-It also generates `src/anylang.ts`, which imports all locale JSON files and exports runtime helpers.
+It also generates `anylang.ts`, which imports all locale JSON files and exports runtime helpers.
 
 3. Translate with Gemini:
 
