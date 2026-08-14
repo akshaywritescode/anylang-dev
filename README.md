@@ -351,10 +351,4 @@ function LanguageSelector() {
 
 ## Star History
 
-<a href="https://www.star-history.com/?repos=akshaywritescode%2Fanylang-dev&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=akshaywritescode/anylang-dev&type=date&theme=dark&legend=top-left&sealed_token=3Ixxh9yXj1NaIQ8JEXpIoMH85tkjIsimmpXN6YqpAzckDC-_b371qgZfRecGUNCdVh_384a0HTQXQ0TjQT2b-3mhucqVRnLjhWj9GVJ4_7Oi6qakwhbxhkO3jgDJLCH25-FlWCxSdUNdPoaQAjg2-v9HFgVaQhP3iWYz4Qxg6X5wPAIsEnz4yeOHkMzg" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=akshaywritescode/anylang-dev&type=date&legend=top-left&sealed_token=3Ixxh9yXj1NaIQ8JEXpIoMH85tkjIsimmpXN6YqpAzckDC-_b371qgZfRecGUNCdVh_384a0HTQXQ0TjQT2b-3mhucqVRnLjhWj9GVJ4_7Oi6qakwhbxhkO3jgDJLCH25-FlWCxSdUNdPoaQAjg2-v9HFgVaQhP3iWYz4Qxg6X5wPAIsEnz4yeOHkMzg" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=akshaywritescode/anylang-dev&type=date&legend=top-left&sealed_token=3Ixxh9yXj1NaIQ8JEXpIoMH85tkjIsimmpXN6YqpAzckDC-_b371qgZfRecGUNCdVh_384a0HTQXQ0TjQT2b-3mhucqVRnLjhWj9GVJ4_7Oi6qakwhbxhkO3jgDJLCH25-FlWCxSdUNdPoaQAjg2-v9HFgVaQhP3iWYz4Qxg6X5wPAIsEnz4yeOHkMzg" />
- </picture>
-</a>
+[![Star History Chart](https://api.star-history.com/chart?repos=akshaywritescode/anylang-dev&type=date&legend=top-left&sealed_token=IW7FthJ08QfTSWV0nUpX352twrKHJKRjdJqCmsYrpkj5vGtMR6uaSwQCVRk9WIkYeNo4C70DbPt-Qsms2WdE50QnRAYipBwTqxbrO2YYxak4FCWJoDpdO99tXzjo2fg)](https://www.star-history.com/?repos=akshaywritescode%2Fanylang-dev&type=date&legend=top-left)
