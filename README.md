@@ -4,6 +4,8 @@
 
 A bring-your-own-key website translation CLI with Vite and Next.js support. It automatically scans your React components, extracts text, and translates them using your own AI provider keys (Gemini, OpenRouter, Anthropic, OpenAI, Mistral, and more).
 
+[**📖 Read the full documentation at anylang.mintlify.app**](https://anylang.mintlify.app/)
+
 ---
 
 ## Installation
