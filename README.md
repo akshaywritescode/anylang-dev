@@ -95,4 +95,4 @@ function Selector() {
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/chart?repos=akshaywritescode/anylang-dev&type=date&legend=top-left&sealed_token=IW7FthJ08QfTSWV0nUpX352twrKHJKRjdJqCmsYrpkj5vGtMR6uaSwQCVRk9WIkYeNo4C70DbPt-Qsms2WdE50QnRAYipBwTqxbrO2YYxak4FCWJoDpdO99tXzjo2fg)](https://www.star-history.com/?repos=akshaywritescode%2Fanylang-dev&type=date&legend=top-left)
+[![Star History Chart](https://api.star-history.com/chart?repos=akshaywritescode/anylang-dev&type=date&legend=top-left&sealed_token=SNVwVxiar2GWHTCIWwbQrCuR-ifxQmzkgDz6nNpolmiUx7UrGrZ8Vs_N6GuPmz1WilDSpz0hYyeaw87g2Y6Yu0Mw6T_xaHLjnduU78ioayvvozR-nAhF_w6JHsLzieJ4TP7GQ9qh5mRWHl3Ol10xjFp8zyDKT5Hp0LtKyD0zP95gcJSj_9OfvoZxGi2o)](https://www.star-history.com/?repos=akshaywritescode%2Fanylang-dev&type=date&legend=top-left)
